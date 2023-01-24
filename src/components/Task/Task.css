@@ -1,0 +1,59 @@
+.Task{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #202020;
+    gap: 5rem;
+}
+.Task__section-dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;  
+    width: 80%;
+}
+.Task__section-task{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    gap: 1rem; 
+}
+.Task__input{
+    width: 80%;
+    height: 3rem;
+}
+.Task__article{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 60%;
+    list-style: none;;
+}
+.Task__li{
+    width: 40%;
+    height: 2.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #000;
+}
+.Task__button-crear{
+    width: 10%;
+    height: 3rem;
+}
+.Task__button-delete{
+    width: 2rem;
+    background-color: #fff;
+    height: 2rem;
+}
