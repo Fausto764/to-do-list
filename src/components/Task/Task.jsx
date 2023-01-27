@@ -23,7 +23,7 @@ const Task = ()=>{
                 
             <section className='Task__section-task'>
                 <ul className='Task__ul'>
-                    <NewTask lista={tasks}/>
+                    <NewTask lista={tasks} setLista={setTasks}/>
                 </ul>
             </section>
 
