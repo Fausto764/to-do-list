@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    max-width: 100vw;
+    min-height: 100vh;
     background-color: #202020;
     gap: 5rem;
 }
@@ -37,16 +37,26 @@
     width: 60%;
     list-style: none;;
 }
+.Task__ul{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
 .Task__li{
-    width: 40%;
+    width: 50%;
     height: 2.5rem;
     background-color: #fff;
     border-radius: 0.5rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    margin-left: .5rem;
     border: 1px solid #000;
+    gap: 50%;
+    padding: .5rem;
 }
 .Task__button-crear{
     width: 10%;
@@ -54,6 +64,12 @@
 }
 .Task__button-delete{
     width: 2rem;
-    background-color: #fff;
+    background-color: rgb(255, 0, 0);
     height: 2rem;
+}
+.Task__p{
+    text-transform: capitalize;
+    font-family:monospace;
+    min-width: max-content;
+    max-height: min-content;
 }
