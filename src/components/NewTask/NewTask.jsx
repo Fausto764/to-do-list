@@ -2,8 +2,10 @@ import { useContext } from 'react'
 import { ThemeContext } from '../../Context/ThemeContext'
 
 const NewTask = ({ lista, setLista }) => {
-  const { darkMode, setDarkMode, darkTheme, lightTheme } =
-    useContext(ThemeContext)
+  const { darkMode, darkTheme, lightTheme } = useContext(ThemeContext)
+  const setStyles = (key) => {
+    return darkMode ? darkTheme[key] : lightTheme[key]
+  }
   if (lista !== []) {
     return lista.map((element, index) => {
       function borrada () {
@@ -14,12 +16,12 @@ const NewTask = ({ lista, setLista }) => {
           className="Task__li"
           key={index}
           style={{
-            backgroundColor: darkMode ? darkTheme.input : lightTheme.input
+            backgroundColor: setStyles('input')
           }}
         >
           <p
             className="Task__p"
-            style={{ color: darkMode ? darkTheme.text : lightTheme.text }}
+            style={{ color: setStyles('text') }}
           >
             {element}
           </p>

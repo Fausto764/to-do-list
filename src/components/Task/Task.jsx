@@ -8,7 +8,7 @@ const Task = () => {
   const { darkMode, setDarkMode, darkTheme, lightTheme } = useContext(ThemeContext)
 
   const [input, setInput] = useState('')
-  const [tasks, setTasks] = useLocalStorage('tasks', [])
+  const [tasks, setTasks] = useLocalStorage({ key: 'tasks', initialValue: [] })
 
   function createTask () {
     if (input !== '') {
@@ -23,19 +23,21 @@ const Task = () => {
       setDarkMode(true)
     }
   }
-
+  const setStyles = (key) => {
+    return darkMode ? darkTheme[key] : lightTheme[key]
+  }
   return (
         <>
-            <header className='header' style={{ backgroundColor: darkMode ? darkTheme.headerBackground : lightTheme.headerBackground }}>
-                <h1 className='header__h1'style={{ color: darkMode ? darkTheme.text : lightTheme.text }}>{darkMode ? darkTheme.mode : lightTheme.mode} </h1>
-                <button className='header__button' onClick={toggleMode} style={{ backgroundColor: darkMode ? darkTheme.backgroundButton : lightTheme.backgroundButton }} ></button>
+            <header className='header' style={{ backgroundColor: setStyles('headerBackground') }}>
+                <h1 className='header__h1'style={{ color: setStyles('text') }}>{setStyles('mode')} </h1>
+                <button className='header__button' onClick={toggleMode} style={{ backgroundColor: setStyles('backgroundButton') }} ></button>
             </header>
-            <main className="Task"style={{ backgroundColor: darkMode ? darkTheme.background : lightTheme.background }}>
+            <main className="Task"style={{ backgroundColor: setStyles('background') }}>
                 <section className='Task__section-dashboard'>
-                    <input className='Task__input' value={input} style={{ backgroundColor: darkMode ? darkTheme.input : lightTheme.input, border: 'none', color: darkMode ? darkTheme.text : lightTheme.text }}onChange={event => {
+                    <input className='Task__input' value={input} style={{ backgroundColor: setStyles('input'), border: 'none', color: setStyles('text') }}onChange={event => {
                       setInput(event.target.value)
                     }}/>
-                    <button className='Task__button-create' onClick={(event) => { createTask() }} style={{ backgroundColor: darkMode ? darkTheme.input : lightTheme.input, border: 'none', color: darkMode ? darkTheme.text : lightTheme.text }}>Crear</button>
+                    <button className='Task__button-create' onClick={(event) => { createTask() }} style={{ backgroundColor: setStyles('input'), border: 'none', color: setStyles('text') }}>Crear</button>
                 </section>
 
                 <section className='Task__section-task'>
