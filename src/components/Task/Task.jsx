@@ -1,14 +1,10 @@
 import './Task.css'
 import { NewTask } from '../NewTask/NewTask'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { ThemeContext } from '../../Context/ThemeContext'
-import { useLocalStorage } from '../hooks/useLocalStorage'
 
 const Task = () => {
-  const { darkMode, setDarkMode, darkTheme, lightTheme } = useContext(ThemeContext)
-
-  const [input, setInput] = useState('')
-  const [tasks, setTasks] = useLocalStorage({ key: 'tasks', initialValue: [] })
+  const { darkMode, setDarkMode, darkTheme, lightTheme, input, setInput, tasks, setTasks } = useContext(ThemeContext)
 
   function createTask () {
     if (input !== '') {
@@ -42,7 +38,7 @@ const Task = () => {
 
                 <section className='Task__section-task'>
                     <ul className='Task__ul'>
-                        <NewTask lista={tasks} setLista={setTasks}/>
+                        <NewTask/>
                     </ul>
                 </section>
 

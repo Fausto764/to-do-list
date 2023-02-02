@@ -57,7 +57,7 @@
     align-items: center;
     margin-left: .5rem;
     border: 1px solid #000;
-    gap: 50%;
+    gap: 10%;
     padding: .5rem;
 }
 .Task__button-create{
@@ -67,9 +67,9 @@
     border-radius: 1rem;
 }
 .Task__button-delete{
-    width: 2rem;
     background-color: rgb(255, 0, 0);
-    height: 2rem;
+    border: none;
+    padding: .5rem;
 }
 .Task__p{
     text-transform: capitalize;
@@ -96,4 +96,9 @@
 .header__h1{
     font-family: sans-serif;
     font-weight: 200;
+}
+.buttons__container{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }

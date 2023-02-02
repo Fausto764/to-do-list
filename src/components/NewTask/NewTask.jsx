@@ -1,16 +1,29 @@
 import { useContext } from 'react'
 import { ThemeContext } from '../../Context/ThemeContext'
 
-const NewTask = ({ lista, setLista }) => {
-  const { darkMode, darkTheme, lightTheme } = useContext(ThemeContext)
+const NewTask = () => {
+  const { darkMode, darkTheme, lightTheme, input, tasks, setTasks } = useContext(ThemeContext)
   const setStyles = (key) => {
     return darkMode ? darkTheme[key] : lightTheme[key]
   }
-  if (lista !== []) {
-    return lista.map((element, index) => {
+  if (tasks !== []) {
+    return tasks.map((element, index) => {
       function borrada () {
-        setLista(lista.filter((item) => item !== element))
+        setTasks(tasks.filter((item) => item !== element))
       }
+      function update () {
+        if (input !== '') {
+          setTasks(prevList => {
+            prevList = [...tasks]
+            prevList[index] = input
+            window.localStorage.setItem('tasks', JSON.stringify(prevList))
+            return prevList
+          })
+        } else {
+          console.log('el input estaba vacio')
+        }
+      }
+
       return (
         <li
           className="Task__li"
@@ -25,7 +38,10 @@ const NewTask = ({ lista, setLista }) => {
           >
             {element}
           </p>
-          <button className="Task__button-delete" onClick={borrada} />
+          <section className='buttons__container'>
+            <button className="Task__button-update" onClick={update}>Update</button>
+            <button className="Task__button-delete" onClick={borrada} >Delete</button>
+          </section>
         </li>
       )
     })

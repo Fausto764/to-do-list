@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
 import { useLocalStorage } from '../components/hooks/useLocalStorage'
 
@@ -6,7 +6,8 @@ export const ThemeContext = createContext()
 
 export function ThemeContextProvider (props) {
   const [darkMode, setDarkMode] = useLocalStorage({ key: 'darkMode', initialValue: false })
-
+  const [input, setInput] = useState('')
+  const [tasks, setTasks] = useLocalStorage({ key: 'tasks', initialValue: [] })
   // dark
   const darkTheme = {
     mode: 'Dark Mode',
@@ -32,7 +33,11 @@ export function ThemeContextProvider (props) {
           darkMode,
           setDarkMode,
           darkTheme,
-          lightTheme
+          lightTheme,
+          input,
+          tasks,
+          setTasks,
+          setInput
         }}>
             {props.children}
         </ThemeContext.Provider>
